@@ -35,7 +35,7 @@ class _AraState extends State<Ara> {
 
 
                   DropdownButton<String>(
-                            hint: Text('Nereden'),
+                            hint: Text('Nereden '),
                     value: selectedIl,
                     items: _ilSecenekleri.map((il) {
                       return DropdownMenuItem<String>(
@@ -58,7 +58,7 @@ class _AraState extends State<Ara> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 DropdownButton<String>(
-                  hint: Text('Nereye'),
+                  hint: Text('Nereye '),
                   value: selectedIl0,
                   items: _ilSecenekleri.map((il) {
                     return DropdownMenuItem<String>(

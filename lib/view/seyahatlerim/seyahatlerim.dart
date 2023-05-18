@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../sabitler/ext.dart';
+import '../hesabım/oturum/giris.dart';
 
 class Seyahatlerim extends StatelessWidget {
   @override
@@ -35,7 +36,7 @@ class Seyahatlerim extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => GirisSayfasi(   )),
+                    MaterialPageRoute(builder: (context) => GirisSayfasi()),
                   );
                 },
                 style: ButtonStyle(

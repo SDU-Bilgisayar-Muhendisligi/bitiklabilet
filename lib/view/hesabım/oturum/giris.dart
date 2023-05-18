@@ -21,48 +21,15 @@ class _GirisSayfasiState extends State<GirisSayfasi>{
     return SafeArea( //en üstteki menübarı ayırır
       child: Scaffold(
         body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-              color: renk(
-                arka_renk,
-              )
-          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  width: 180,
-                  height: 180,
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.2),
-                      width: 1,
-                    ),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.8),
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(
-                        color: renk("2D2F3A"),
-                        width: 15,
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.login,
-                      size: 45,
-                    ),
-                  ),
-                ),
                 Container(
                   margin:EdgeInsets.only(top: 20),
                   child: Text(
                     "Giriş Yapın",
                     style: GoogleFonts.quicksand(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 30,
                     ),
                   ),

@@ -20,7 +20,7 @@ class Seyahatlerim extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                  margin:EdgeInsets.only(top: 50),
+                  margin:EdgeInsets.only(top: 50,bottom:50),
                   child: Text(
                     "Sistemde kayıtlı bilet detaylarına ulaşmak ve işlem yapabilmek için"
                         " Üye Girişi yapmanız gerekmektedir.",
@@ -31,24 +31,33 @@ class Seyahatlerim extends StatelessWidget {
                     ),
                   )
               ),
-              InkWell(
-                child: Container(
-                  margin: EdgeInsets.only(top:25,bottom: 25),
-                  padding: EdgeInsets.all(10),
-                  decoration:  BoxDecoration(
-                      color: renk("03BB85"),
-                      ),
-                  child: Text("ÜYE GİRİŞİ YAP",
-                    style: GoogleFonts.quicksand(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => GirisSayfasi(   )),
+                  );
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    renk("03BB85"),
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                    EdgeInsets.only(top: 15,bottom: 15,right: 35,left: 35),
                   ),
                 ),
-
-          ),
+                child: Text(
+                  "ÜYE GİRİŞİ YAP",
+                  style: GoogleFonts.quicksand(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 30),
               Row(
-                children: [
+                children: const [
                   Expanded(
                     child: Divider(
                       color: Colors.grey,
@@ -57,7 +66,7 @@ class Seyahatlerim extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text('veya'),
                   ),
                   Expanded(
@@ -69,27 +78,37 @@ class Seyahatlerim extends StatelessWidget {
                   ),
                 ],
               ),
-                InkWell(
-                     child: Container(
-                       margin: EdgeInsets.only(top:25,bottom: 25),
-                       padding: EdgeInsets.all(10),
-                       decoration:  BoxDecoration(
-                       border: Border.all(
-                         color: renk("03BB85"),
-                       )
-                      ),
-                         child: Text("SEYAHAT SORGULA",
-                          style: GoogleFonts.notoSans(
-                          color: renk("03BB85"),
-                          fontSize: 20,
+              SizedBox(height: 30),
+              TextButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Colors.white,
+                  ),
+                  padding: MaterialStateProperty.all<EdgeInsets>(
+                    EdgeInsets.only(top: 15,bottom: 15,right: 35,left: 35),
+                  ),
+                  side: MaterialStateProperty.all<BorderSide>(
+                    BorderSide(
+                      width:2,
+                      color: renk("03BB85"),
+                    ),
+                  ),
+                ),
+                child: Text(
+                  "SEYAHAT SORGULA",
+                  style: GoogleFonts.quicksand(
+                      color: renk("03BB85"),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-    ),
-          ),
-        ],
-        ),
-        ),
-    ),
     );
   }
 }
+

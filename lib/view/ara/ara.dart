@@ -1,3 +1,4 @@
+import 'package:bitiklabilet/view/ara/busfilter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -109,7 +110,13 @@ class _AraState extends State<Ara> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: ()
+                  {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Bus( )),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF1F9B78), // #1F9B78 renk tonu
                   ),

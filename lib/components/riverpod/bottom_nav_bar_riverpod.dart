@@ -5,6 +5,7 @@ import 'package:bitiklabilet/view/yard%C4%B1m/yard%C4%B1m.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
 import '../../view/seyahatlerim/seyahatlerim.dart';
 
 class BottomNavBarRiverpod extends ChangeNotifier{
@@ -38,6 +39,7 @@ class BottomNavBarRiverpod extends ChangeNotifier{
         return IlkOturum();
       default:
         return Ara();
+
     }
   }
 

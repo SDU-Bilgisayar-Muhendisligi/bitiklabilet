@@ -15,7 +15,7 @@ class Seyahatlerim extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.red,
           centerTitle: true,
-          title: Text("Seyahatlerim"),
+          title: Text("Geçmiş Seferlerim"),
         ),
         body: Container(
           child: Column(

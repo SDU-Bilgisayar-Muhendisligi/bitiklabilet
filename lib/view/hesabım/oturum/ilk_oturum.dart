@@ -1,5 +1,6 @@
 
 
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_oturumu.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/kampanyalar.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/para_birimi.dart';
@@ -57,10 +58,58 @@ class IlkOturum extends StatelessWidget {
                       ),
                     ),
                   ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => GirisSayfasi( )),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.white,
+                      ),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.only(top:10 ,bottom: 10,right: 81,left: 81),
+                      ),
+                    ),
+                    child: Text("ÜYE OL",
+                      style: GoogleFonts.quicksand(
+                        color: Colors.red,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Editor( )),
+                      );
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.white,
+                      ),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.only(top:10 ,bottom: 10,right: 63,left: 63),
+                      ),
+                    ),
+                    child: Text("Editör Girişi",
+                      style: GoogleFonts.quicksand(
+                        color: Colors.red,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            Column(
+            SizedBox(height: 250),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton.icon(
                   onPressed: () {

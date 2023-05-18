@@ -20,6 +20,13 @@ class _GirisSayfasiState extends State<GirisSayfasi>{
   Widget build(BuildContext context){
     return SafeArea( //en üstteki menübarı ayırır
       child: Scaffold(
+        appBar:AppBar(
+          backgroundColor:Colors.red,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ),
         body: Container(
           child: SingleChildScrollView(
             child: Column(

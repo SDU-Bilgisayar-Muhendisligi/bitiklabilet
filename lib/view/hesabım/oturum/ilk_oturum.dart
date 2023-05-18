@@ -1,6 +1,7 @@
 
 
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_oturumu.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/profil_bilgileri.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/kampanyalar.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/para_birimi.dart';
@@ -107,7 +108,30 @@ class IlkOturum extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 250),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profil( )),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Colors.white,
+                ),
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                  EdgeInsets.only(top:10 ,bottom: 10,right: 63,left: 63),
+                ),
+              ),
+              child: Text("PROFİLİM",
+                style: GoogleFonts.quicksand(
+                  color: Colors.red,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

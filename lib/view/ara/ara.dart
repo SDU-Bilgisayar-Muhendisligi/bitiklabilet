@@ -1,5 +1,6 @@
 import 'package:bitiklabilet/view/ara/busfilter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class Ara extends StatefulWidget {
@@ -9,127 +10,272 @@ class Ara extends StatefulWidget {
   _AraState createState() => _AraState();
 }
 
-class _AraState extends State<Ara> {
-  List<String> _ilSecenekleri= [      'Adana',      'Adıyaman',      'Afyonkarahisar',      'Ağrı',      'Amasya',      'Ankara',      'Antalya',      'Artvin',      'Aydın',      'Balıkesir',      'Bilecik',      'Bingöl',      'Bitlis',      'Bolu',      'Burdur',      'Bursa',      'Çanakkale',      'Çankırı',      'Çorum',      'Denizli',      'Diyarbakır',      'Edirne',      'Elazığ',      'Erzincan',      'Erzurum',      'Eskişehir',      'Gaziantep',      'Giresun',      'Gümüşhane',      'Hakkari',      'Hatay',      'Isparta',      'Mersin',      'İstanbul',      'İzmir',      'Kars',      'Kastamonu',      'Kayseri',      'Kırklareli',      'Kırşehir',      'Kocaeli',      'Konya',      'Kütahya',      'Malatya',      'Manisa',      'Kahramanmaraş',      'Mardin',      'Muğla',      'Muş',      'Nevşehir',      'Niğde',      'Ordu',      'Rize',      'Sakarya',      'Samsun',      'Siirt',      'Sinop',      'Sivas',      'Tekirdağ',      'Tokat',      'Trabzon',      'Tunceli',      'Şanlıurfa',      'Uşak',      'Van',      'Yozgat',      'Zonguldak',      'Aksaray',      'Bayburt',      'Karaman',      'Kırıkkale',      'Batman',      'Şırnak',      'Bartın',      'Ardahan',      'Iğdır',      'Yalova',      'Karabük',      'Kilis',      'Osmaniye',      'Düzce'    ];
-
-  String? selectedIl;
-  String? selectedIl0;
-  DateTime? selectedDate;
-
+class _AraState extends State<Ara>{
+  bool tripType=false;
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Bitıklabilet'),
-        backgroundColor: Colors.red,
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-            SizedBox(height: 0),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-
-
-                  DropdownButton<String>(
-                            hint: Text('Nereden '),
-                    value: selectedIl,
-                    items: _ilSecenekleri.map((il) {
-                      return DropdownMenuItem<String>(
-                        value: il,
-                        child: Text(il),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      setState(() {
-                        selectedIl = value;
+  Widget build(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
+      child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+       children: [
+        Text(
+          "bitiklabilet dünyamıza",
+          style: GoogleFonts.montserrat(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 8),
+        Text("hoşgeldiniz",
+        style: GoogleFonts.montserrat(
+          fontSize:24,
+          fontWeight: FontWeight.bold,
+        ),
+        ),
+        Center(
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 32),
+            height: 64,
+            width: MediaQuery.of(context).size.width-160,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(32)
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 8,vertical: 8),
+            child: Row(
+                children: [
+                  Expanded(
+                      child: GestureDetector(
+                          onTap: (){
+                            setState((){
+                             tripType = true;
                       });
                     },
-                  )
-
-              ],
-            ),
-            SizedBox(height: 25),
-
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                DropdownButton<String>(
-                  hint: Text('Nereye '),
-                  value: selectedIl0,
-                  items: _ilSecenekleri.map((il) {
-                    return DropdownMenuItem<String>(
-                      value: il,
-                      child: Text(il),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      selectedIl0 = value;
-                    });
-                  },
-                )
-              ],
-            ),
-            SizedBox(height: 25),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () async {
-                    final pickedDate = await showDatePicker(
-                      context: context,
-                      initialDate: selectedDate ?? DateTime.now(),
-                      firstDate: DateTime(2023),
-                      lastDate: DateTime(2100),
-                    );
-
-                    if (pickedDate != null) {
-                      setState(() {
-                        selectedDate = pickedDate;
-                      });
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF1F9B78)
+                        child: tripType
+                          ? Container(
+                          decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(32)
+                          ),
+                          child:const Center(
+                            child: Text("Gidiş",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        )
+                            :const Center(
+                          child: Text("Gidiş",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                    ),
                   ),
-                  child: Text(
-                    selectedDate != null
-                        ? DateFormat('    dd/MM/yyyy    ').format(selectedDate!)
-                        : 'Seyehat Tarihi Seç',
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 50),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: ()
-                  {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Bus( )),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF1F9B78), // #1F9B78 renk tonu
-                  ),
-                  child: Text('      Otobüs Bileti Bul      '),
-                ),
-              ],
-            ),
-          ],
+                         Expanded(
+                             child: GestureDetector(
+                               onTap: (){
+                                 setState(() {
+                                   tripType =false;
+                               });
+                              },
+                               child: !tripType
+                                 ? Container(
+                                 decoration: BoxDecoration(
+                                   color: Colors.red,
+                                   borderRadius: BorderRadius.circular(32)
+                                 ),
+                                   child:const Center(
+                                     child: Text("Gidiş-Dönüş",
+                                     style: TextStyle(
+                                       fontSize: 16,
+                                       fontWeight: FontWeight.bold,
+                                       color: Colors.white,
+                                     ),
+                                     ),
+                                   ),
+                               )
+                                   :const Center(
+                                       child: Text("Gidiş-Dönüş",
+                                         style: TextStyle(
+                                           fontSize: 16,
+                                           fontWeight: FontWeight.bold,
+                                           color: Colors.white,
+                                         ),
+                                       ),
+                               ),
+                             )
+              ),
+            ],
+          ),
         ),
-      ),
+        ),
+
+        Container(
+          margin: EdgeInsets.only(bottom: 8),
+          decoration: BoxDecoration(
+            border: Border.all(),
+            borderRadius: BorderRadius.circular(6)),
+            padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
+          ),
+          child: Row(
+            children: [
+              Text("Nereden",
+              style: TextStyle(
+              fontSize: 16,
+              )
+              ),
+              Expanded(
+                  child: TextField(
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                  )
+              )
+              ),
+            ],
+          ),
+        ),
+         Container(
+           margin: EdgeInsets.only(bottom: 8),
+           decoration: BoxDecoration(
+               border: Border.all(),
+               borderRadius: BorderRadius.circular(6)),
+           padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
+           ),
+           child: Row(
+             children: const [
+               Text("Nereye",
+                   style: TextStyle(
+                     fontSize: 16,
+                   )
+               ),
+               SizedBox(width: 14),
+               Expanded(
+                   child: TextField(
+                       style: TextStyle(
+                         fontSize: 24,
+                         fontWeight: FontWeight.bold,
+                       ),
+                       decoration: InputDecoration(
+                         border: InputBorder.none,
+                       )
+                   )
+               ),
+             ],
+           ),
+         ),
+         Padding(
+           padding: const EdgeInsets.symmetric(vertical: 24),
+            child:Row(
+               children: [
+                 Expanded(
+                    child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:const [
+                       Text('Date',
+                         style: TextStyle(
+                           fontWeight: FontWeight.bold,
+                           fontSize: 16,
+                           color: Colors.grey,
+                       ),
+                 ),
+                      SizedBox(height: 16,),
+               ],
+             ),
+             ),
+             Expanded(
+             child: Column(
+               crossAxisAlignment: CrossAxisAlignment.start,
+               children:const [
+                 Text('Returning',
+                   style: TextStyle(
+                     fontSize: 16,
+                     fontWeight: FontWeight.bold,
+                     color: Colors.grey,
+                   ),
+                 ),
+                 SizedBox(height: 16),
+                 Text("Set date",
+                   style: TextStyle(
+                     fontWeight: FontWeight.bold,
+                     fontSize: 16,
+                 ),
+                 ),
+               ],
+             ),
+                 )
+                 ],
+           ),
+         ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                 Text("Yolcular",
+                   style: TextStyle(
+                     fontWeight: FontWeight.bold,
+                     fontSize: 18,
+                     color: Colors.grey,
+                   ),
+                 ),
+                 Container(
+                  height: 42,
+                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32),
+                    border: Border.all(
+                      color: Colors.red,
+                      width: 1.5
+                     )
+                  ),
+                     child: Row(
+                         children: [
+                         IconButton(onPressed: (){} , icon: Icon(Icons.remove)),
+                        Text("1",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          )),
+                        IconButton(onPressed: (){} ,
+                            icon: Icon(Icons.add,
+                            ),
+                        ),
+                 ],
+               ),
+             )
+           ],
+         ),
+         SizedBox(height: 35),
+         Container(
+           decoration: BoxDecoration(
+             color: Colors.green,
+             borderRadius: BorderRadius.circular(40),
+           ),
+           padding: EdgeInsets.symmetric(vertical: 20),
+           child:Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               Text("Otobüs Bileti Bul")
+             ],
+           ) ,
+         )
+      ],
+
+    ),
     );
   }
 }
+
+
 
 
 

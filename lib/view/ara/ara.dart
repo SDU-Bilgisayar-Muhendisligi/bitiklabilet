@@ -12,10 +12,14 @@ class Ara extends StatefulWidget {
 
 class _AraState extends State<Ara>{
   bool tripType=false;
+  int _counter=0;
+  TextEditingController _neredenTec=TextEditingController();
+  TextEditingController _nereyeTec=TextEditingController();
   @override
   Widget build(BuildContext context){
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
+      child:SingleChildScrollView(
       child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
        children: [
@@ -117,60 +121,104 @@ class _AraState extends State<Ara>{
           ),
         ),
         ),
-
-        Container(
-          margin: EdgeInsets.only(bottom: 8),
-          decoration: BoxDecoration(
-            border: Border.all(),
-            borderRadius: BorderRadius.circular(6)),
-            padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
-          ),
-          child: Row(
-            children: [
-              Text("Nereden",
-              style: TextStyle(
-              fontSize: 16,
-              )
-              ),
-              Expanded(
-                  child: TextField(
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                  )
-              )
-              ),
-            ],
-          ),
-        ),
          Container(
-           margin: EdgeInsets.only(bottom: 8),
-           decoration: BoxDecoration(
-               border: Border.all(),
-               borderRadius: BorderRadius.circular(6)),
-           padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
-           ),
-           child: Row(
-             children: const [
-               Text("Nereye",
-                   style: TextStyle(
-                     fontSize: 16,
-                   )
+           height: 140,
+           child: Stack(
+             children: [
+               Positioned(
+                 left:0,
+                 right: 0,
+                 bottom: 0,
+                 top: 0,
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   Container(
+                     margin: EdgeInsets.only(bottom: 8),
+                     decoration: BoxDecoration(
+                         border: Border.all(),
+                         borderRadius: BorderRadius.circular(6)),
+                     padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
+                     ),
+                     child: Row(
+                       children: [
+                         Text("Nereden",
+                             style: TextStyle(
+                               fontSize: 16,
+                             )
+                         ),
+                         Expanded(
+                             child: TextField(
+                               controller: _neredenTec,
+                                 style: TextStyle(
+                                   fontSize: 24,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                                 decoration: InputDecoration(
+                                   border: InputBorder.none,
+                                 )
+                             )
+                         ),
+                       ],
+                     ),
+                   ),
+                   Container(
+                     margin: EdgeInsets.only(bottom: 8),
+                     decoration: BoxDecoration(
+                         border: Border.all(),
+                         borderRadius: BorderRadius.circular(6)
+                     ),
+                     padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
+                     ),
+                     child: Row(
+                       children: [
+                         Text("Nereye",
+                             style: TextStyle(
+                               fontSize: 16,
+                             )
+                         ),
+                         SizedBox(width: 14),
+                         Expanded(
+                             child: TextField(
+                               controller: _nereyeTec,
+                                 style: TextStyle(
+                                   fontSize: 24,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                                 decoration: InputDecoration(
+                                   border: InputBorder.none,
+                                 )
+                             )
+                         ),
+                       ],
+                     ),
+                   ),
+                 ],
+               )
                ),
-               SizedBox(width: 14),
-               Expanded(
-                   child: TextField(
-                       style: TextStyle(
-                         fontSize: 24,
-                         fontWeight: FontWeight.bold,
-                       ),
-                       decoration: InputDecoration(
-                         border: InputBorder.none,
-                       )
-                   )
+               Positioned(
+                 right: 16,
+                   bottom: 16,
+                   top: 16,
+                   child: GestureDetector(
+                     onTap: (){
+                       setState(() {
+                         final tmpText=_neredenTec.text;
+                         _neredenTec.text=_nereyeTec.text;
+                         _nereyeTec.text=tmpText;
+                       });
+                       },
+                   child:const Center(
+                   child: CircleAvatar(
+                     radius: 32,
+                     backgroundColor: Colors.red,
+                     foregroundColor: Colors.white,
+                     child: Icon(
+                       Icons.sync,
+                     ),
+                   ),
+               ),
+               ),
                ),
              ],
            ),
@@ -221,7 +269,7 @@ class _AraState extends State<Ara>{
                Row(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: [
-                 Text("Yolcular",
+                 const Text("Yolcular",
                    style: TextStyle(
                      fontWeight: FontWeight.bold,
                      fontSize: 18,
@@ -239,13 +287,27 @@ class _AraState extends State<Ara>{
                   ),
                      child: Row(
                          children: [
-                         IconButton(onPressed: (){} , icon: Icon(Icons.remove)),
-                        Text("1",
-                          style: TextStyle(
+                         IconButton(
+                             onPressed: (){
+                               _counter--;
+                               if(_counter<=1) _counter=1;
+                               setState(() {
+
+                               });
+                             } ,
+                             icon: Icon(Icons.remove,
+                             color: _counter==1 ? Colors.grey : Colors.black,
+                             )),
+                        Text("$_counter",
+                          style:const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           )),
-                        IconButton(onPressed: (){} ,
+                        IconButton(onPressed: (){
+                          setState(() {
+                            _counter++;
+                          });
+                        } ,
                             icon: Icon(Icons.add,
                             ),
                         ),
@@ -264,15 +326,26 @@ class _AraState extends State<Ara>{
            child:Row(
              mainAxisAlignment: MainAxisAlignment.center,
              children: [
-               Text("Otobüs Bileti Bul")
+               Text("Otobüs Bileti Bul",
+               style: TextStyle(
+                 color: Colors.white,
+               ),)
              ],
            ) ,
-         )
+         ),
+         SizedBox(height: 20),
+         Text("Kesintisiz İade Hakkı ve 0 Komisyon",
+         style: TextStyle(
+           color: Colors.grey[500]
+         ),)
       ],
 
     ),
+      ),
     );
+
   }
+
 }
 
 

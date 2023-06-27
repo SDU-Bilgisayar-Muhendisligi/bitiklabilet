@@ -1,4 +1,4 @@
-import 'package:bitiklabilet/view/ara/busfilter.dart';
+import 'package:bitiklabilet/view/ara/otobüs_ayrinti.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -316,22 +316,36 @@ class _AraState extends State<Ara>{
              )
            ],
          ),
-         SizedBox(height: 35),
-         Container(
-           decoration: BoxDecoration(
-             color: Colors.green,
-             borderRadius: BorderRadius.circular(40),
+         SizedBox(height: 30),
+         Center(
+          child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+             onPressed: () {
+             Navigator.push(
+               context,
+               MaterialPageRoute(builder: (context) => Otobus_Detay( )),
+             );
+             },
+             style: ButtonStyle(
+             backgroundColor: MaterialStateProperty.all<Color>(
+               Colors.green.shade400,
+             ),
+             padding: MaterialStateProperty.all<EdgeInsets>(
+               EdgeInsets.only(left: 15,right: 15,top: 15,bottom: 15),
+             ),
+             ),
+               child: Text("Otobüs Bileti Bul",
+             style: GoogleFonts.quicksand(
+               color: Colors.white,
+               fontSize: 18,
+               fontWeight: FontWeight.w600,
+             ),
            ),
-           padding: EdgeInsets.symmetric(vertical: 20),
-           child:Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: [
-               Text("Otobüs Bileti Bul",
-               style: TextStyle(
-                 color: Colors.white,
-               ),)
-             ],
-           ) ,
+         ),
+         ]
+          ),
          ),
          SizedBox(height: 20),
          Text("Kesintisiz İade Hakkı ve 0 Komisyon",

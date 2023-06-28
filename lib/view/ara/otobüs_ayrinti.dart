@@ -1,4 +1,6 @@
+import 'package:bitiklabilet/view/ara/bus_select.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class Otobus_Detay extends StatefulWidget{
@@ -103,30 +105,42 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(40)
-                        ),
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Center(
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: "120 TL",
-                                  style: TextStyle(
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Center(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Otobus_Hazirlama( )),
+                                  );
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all<Color>(
+                                    Colors.red,
+                                  ),
+                                  padding: MaterialStateProperty.all<EdgeInsets>(
+                                    EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
+                                  ),
+                                ),
+                                child: Text("120 TL",
+                                  style: GoogleFonts.quicksand(
                                     color: Colors.white,
-                                    fontSize: 15
-                                  )
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                          ],
-                          ),
-                          ),
-                        ),
-                      )
+                        ],
+
+                      ),
+
                     ],
                   ),
                 ),
@@ -184,30 +198,41 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          child: Center(
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: "120 TL",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15
-                                      )
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Center(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Otobus_Hazirlama( )),
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                      Colors.red,
+                                    ),
+                                    padding: MaterialStateProperty.all<EdgeInsets>(
+                                      EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
+                                    ),
                                   ),
-                                ],
+                                  child: Text("120 TL",
+                                    style: GoogleFonts.quicksand(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        )
+                          ],
+                        ),
+
                       ],
                     ),
                   ),
@@ -265,30 +290,40 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          child: Center(
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: "120 TL",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15
-                                      )
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Center(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Otobus_Hazirlama( )),
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                      Colors.red,
+                                    ),
+                                    padding: MaterialStateProperty.all<EdgeInsets>(
+                                      EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
+                                    ),
                                   ),
-                                ],
+                                  child: Text("120 TL",
+                                    style: GoogleFonts.quicksand(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        )
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -346,30 +381,40 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          child: Center(
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: "120 TL",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15
-                                      )
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20)
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              child: Center(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Otobus_Hazirlama( )),
+                                    );
+                                  },
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(
+                                      Colors.red,
+                                    ),
+                                    padding: MaterialStateProperty.all<EdgeInsets>(
+                                      EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
+                                    ),
                                   ),
-                                ],
+                                  child: Text("120 TL",
+                                    style: GoogleFonts.quicksand(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        )
+                          ],
+                        ),
                       ],
                     ),
                   ),

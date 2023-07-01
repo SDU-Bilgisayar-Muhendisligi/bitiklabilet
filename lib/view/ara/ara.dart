@@ -3,20 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+
 class Ara extends StatefulWidget {
   Ara({Key? key}) : super(key: key);
 
   @override
   _AraState createState() => _AraState();
+
 }
 
 class _AraState extends State<Ara>{
   bool tripType=false;
   int _counter=0;
-  TextEditingController _neredenTec=TextEditingController();
-  TextEditingController _nereyeTec=TextEditingController();
+   late String _selectedNereden="Denizli";
+   late String _selectedNereye="İstanbul";
+  final List<String> _neredenList = [
+    "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir", "Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kilis", "Kırıkkale", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak"
+  ];
+
+  final List<String> _nereyeList = [
+    "Adana", "Adıyaman", "Afyonkarahisar", "Ağrı", "Aksaray", "Amasya", "Ankara", "Antalya", "Ardahan", "Artvin", "Aydın", "Balıkesir", "Bartın", "Batman", "Bayburt", "Bilecik", "Bingöl", "Bitlis", "Bolu", "Burdur", "Bursa", "Çanakkale", "Çankırı", "Çorum", "Denizli", "Diyarbakır", "Düzce", "Edirne", "Elazığ", "Erzincan", "Erzurum", "Eskişehir", "Gaziantep", "Giresun", "Gümüşhane", "Hakkâri", "Hatay", "Iğdır", "Isparta", "İstanbul", "İzmir", "Kahramanmaraş", "Karabük", "Karaman", "Kars", "Kastamonu", "Kayseri", "Kilis", "Kırıkkale", "Kırklareli", "Kırşehir", "Kocaeli", "Konya", "Kütahya", "Malatya", "Manisa", "Mardin", "Mersin", "Muğla", "Muş", "Nevşehir", "Niğde", "Ordu", "Osmaniye", "Rize", "Sakarya", "Samsun", "Şanlıurfa", "Siirt", "Sinop", "Sivas", "Şırnak", "Tekirdağ", "Tokat", "Trabzon", "Tunceli", "Uşak", "Van", "Yalova", "Yozgat", "Zonguldak"
+  ];
+  DateTime? _departureDate;
+  DateTime? _returnDate;
+
   @override
   Widget build(BuildContext context){
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
       child:SingleChildScrollView(
@@ -37,90 +50,7 @@ class _AraState extends State<Ara>{
           fontWeight: FontWeight.bold,
         ),
         ),
-        Center(
-          child: Container(
-            margin: EdgeInsets.symmetric(vertical: 32),
-            height: 64,
-            width: MediaQuery.of(context).size.width-160,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(32)
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 8,vertical: 8),
-            child: Row(
-                children: [
-                  Expanded(
-                      child: GestureDetector(
-                          onTap: (){
-                            setState((){
-                             tripType = true;
-                      });
-                    },
-                        child: tripType
-                          ? Container(
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(32)
-                          ),
-                          child:const Center(
-                            child: Text("Gidiş",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        )
-                            :const Center(
-                          child: Text("Gidiş",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                    ),
-                  ),
-                         Expanded(
-                             child: GestureDetector(
-                               onTap: (){
-                                 setState(() {
-                                   tripType =false;
-                               });
-                              },
-                               child: !tripType
-                                 ? Container(
-                                 decoration: BoxDecoration(
-                                   color: Colors.red,
-                                   borderRadius: BorderRadius.circular(32)
-                                 ),
-                                   child:const Center(
-                                     child: Text("Gidiş-Dönüş",
-                                     style: TextStyle(
-                                       fontSize: 16,
-                                       fontWeight: FontWeight.bold,
-                                       color: Colors.white,
-                                     ),
-                                     ),
-                                   ),
-                               )
-                                   :const Center(
-                                       child: Text("Gidiş-Dönüş",
-                                         style: TextStyle(
-                                           fontSize: 16,
-                                           fontWeight: FontWeight.bold,
-                                           color: Colors.white,
-                                         ),
-                                       ),
-                               ),
-                             )
-              ),
-            ],
-          ),
-        ),
-        ),
+         Scrollbar(child:
          Container(
            height: 140,
            child: Stack(
@@ -133,79 +63,55 @@ class _AraState extends State<Ara>{
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   Container(
-                     margin: EdgeInsets.only(bottom: 8),
-                     decoration: BoxDecoration(
-                         border: Border.all(),
-                         borderRadius: BorderRadius.circular(6)),
-                     padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
-                     ),
-                     child: Row(
-                       children: [
-                         Text("Nereden",
-                             style: TextStyle(
-                               fontSize: 16,
-                             )
-                         ),
-                         Expanded(
-                             child: TextField(
-                               controller: _neredenTec,
-                                 style: TextStyle(
-                                   fontSize: 24,
-                                   fontWeight: FontWeight.bold,
-                                 ),
-                                 decoration: InputDecoration(
-                                   border: InputBorder.none,
-                                 )
-                             )
-                         ),
-                       ],
-                     ),
+                   DropdownButtonFormField(
+                     iconSize: 10,
+                     value: _selectedNereden,
+                     items: _neredenList.map((String nereden) {
+                       return new DropdownMenuItem<String>(
+                         value: nereden,
+                         child: new Text(nereden),
+                       );
+                     }).toList(),
+                     onChanged: (String? newValue) {
+                       setState(() {
+                         _selectedNereden = newValue!;
+                       });
+                     },
+                     decoration: InputDecoration(labelText: 'NEREDEN'),
                    ),
-                   Container(
-                     margin: EdgeInsets.only(bottom: 8),
-                     decoration: BoxDecoration(
-                         border: Border.all(),
-                         borderRadius: BorderRadius.circular(6)
-                     ),
-                     padding: EdgeInsets.symmetric(horizontal: 8,vertical: 4
-                     ),
-                     child: Row(
-                       children: [
-                         Text("Nereye",
-                             style: TextStyle(
-                               fontSize: 16,
-                             )
-                         ),
-                         SizedBox(width: 14),
-                         Expanded(
-                             child: TextField(
-                               controller: _nereyeTec,
-                                 style: TextStyle(
-                                   fontSize: 24,
-                                   fontWeight: FontWeight.bold,
-                                 ),
-                                 decoration: InputDecoration(
-                                   border: InputBorder.none,
-                                 )
-                             )
-                         ),
-                       ],
-                     ),
+                   DropdownButtonFormField(
+                     iconSize: 10,
+                     value: _selectedNereye,
+                     items: _nereyeList.map((String nereye) {
+                       return new DropdownMenuItem<String>(
+                         value: nereye,
+                         child: new Text(nereye),
+                       );
+                     }).toList(),
+                     onChanged: (String? newValue) {
+                       setState(() {
+                         _selectedNereye = newValue!;
+                       });
+                     },
+                     decoration: InputDecoration(labelText: 'NEREYE'),
                    ),
                  ],
+                ),
                )
+             ]
+           ),
                ),
+         ),
                Positioned(
-                 right: 16,
-                   bottom: 16,
-                   top: 16,
+                 right: 10,
+                   bottom: 10,
+                   top: 10,
                    child: GestureDetector(
                      onTap: (){
                        setState(() {
-                         final tmpText=_neredenTec.text;
-                         _neredenTec.text=_nereyeTec.text;
-                         _nereyeTec.text=tmpText;
+                         final tmpText=_selectedNereden;
+                         _selectedNereden=_selectedNereye;
+                         _selectedNereye=tmpText;
                        });
                        },
                    child:const Center(
@@ -220,9 +126,6 @@ class _AraState extends State<Ara>{
                ),
                ),
                ),
-             ],
-           ),
-         ),
          Padding(
            padding: const EdgeInsets.symmetric(vertical: 24),
             child:Row(
@@ -230,8 +133,8 @@ class _AraState extends State<Ara>{
                  Expanded(
                     child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children:const [
-                       Text('Date',
+                    children: <Widget>[
+                       Text('Gidiş Tarihi',
                          style: TextStyle(
                            fontWeight: FontWeight.bold,
                            fontSize: 16,
@@ -239,82 +142,31 @@ class _AraState extends State<Ara>{
                        ),
                  ),
                       SizedBox(height: 16,),
+                      ElevatedButton(
+                        onPressed: () {
+                          showDatePicker(
+                            context: context,
+                            initialDate: _departureDate ?? DateTime.now(),
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime(2025),
+                          ).then((value){
+                            if (value != null && value.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
+                              setState(() {
+                                _departureDate=value;
+                              });
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red,
+                        ),
+                        child: Text(_departureDate == null ? 'Select date' : DateFormat('dd/MM/yyyy').format(_departureDate!)),
+                      ),
                ],
              ),
              ),
-             Expanded(
-             child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children:const [
-                 Text('Returning',
-                   style: TextStyle(
-                     fontSize: 16,
-                     fontWeight: FontWeight.bold,
-                     color: Colors.grey,
-                   ),
-                 ),
-                 SizedBox(height: 16),
-                 Text("Set date",
-                   style: TextStyle(
-                     fontWeight: FontWeight.bold,
-                     fontSize: 16,
-                 ),
-                 ),
-               ],
-             ),
-                 )
                  ],
            ),
-         ),
-               Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 children: [
-                 const Text("Yolcular",
-                   style: TextStyle(
-                     fontWeight: FontWeight.bold,
-                     fontSize: 18,
-                     color: Colors.grey,
-                   ),
-                 ),
-                 Container(
-                  height: 42,
-                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32),
-                    border: Border.all(
-                      color: Colors.red,
-                      width: 1.5
-                     )
-                  ),
-                     child: Row(
-                         children: [
-                         IconButton(
-                             onPressed: (){
-                               _counter--;
-                               if(_counter<=1) _counter=1;
-                               setState(() {
-
-                               });
-                             } ,
-                             icon: Icon(Icons.remove,
-                             color: _counter==1 ? Colors.grey : Colors.black,
-                             )),
-                        Text("$_counter",
-                          style:const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          )),
-                        IconButton(onPressed: (){
-                          setState(() {
-                            _counter++;
-                          });
-                        } ,
-                            icon: Icon(Icons.add,
-                            ),
-                        ),
-                 ],
-               ),
-             )
-           ],
          ),
          SizedBox(height: 30),
          Center(
@@ -352,17 +204,20 @@ class _AraState extends State<Ara>{
          style: TextStyle(
            color: Colors.grey[500]
          ),)
-      ],
 
-    ),
+],
       ),
+    ),
     );
+
 
   }
 
 }
 
-
+class DatePicker {
+  static showDatePicker(BuildContext context, {required DateTime initialDate, required DateTime firstDate, required DateTime lastDate, required BuildContext context2 }) async {}
+}
 
 
 

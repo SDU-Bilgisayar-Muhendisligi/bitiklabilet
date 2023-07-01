@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "499618328875",
+    "project_id": "bitiklabilet-8fb7d",
+    "storage_bucket": "bitiklabilet-8fb7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499618328875:android:438eb4546b5ac38ba3156e",
+        "android_client_info": {
+          "package_name": "com.example.bitiklabilet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499618328875-i4kuh4id1fefl3k3rpjanhg7s8v3r92i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnD-5uqDRpfz5qNj556a8MWstKuYJ5h7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499618328875-i4kuh4id1fefl3k3rpjanhg7s8v3r92i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

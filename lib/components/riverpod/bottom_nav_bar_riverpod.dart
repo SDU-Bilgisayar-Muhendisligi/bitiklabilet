@@ -1,6 +1,10 @@
 import 'package:bitiklabilet/view/ara/ara.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_girisi.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_paneli.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/giris.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ikincioturum.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ilk_oturum.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/uyeol.dart';
 import 'package:bitiklabilet/view/yard%C4%B1m/yard%C4%B1m.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +41,17 @@ class BottomNavBarRiverpod extends ChangeNotifier{
         return Yardim();
       case 3:
         return IlkOturum();
+      case 4:
+        return EditorPaneli();
+      case 5:
+        return GirisSayfasi();
+      case 6:
+        return Editorgiris();
+      case 7:
+        return Uyeol();
+      case 8:
+        return ikincioturum();
+
       default:
         return Ara();
 

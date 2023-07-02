@@ -1,5 +1,4 @@
 import 'package:bitiklabilet/view/ara/ara.dart';
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/giris.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ilk_oturum.dart';
 import 'package:bitiklabilet/view/yard%C4%B1m/yard%C4%B1m.dart';
 import 'package:flutter/cupertino.dart';

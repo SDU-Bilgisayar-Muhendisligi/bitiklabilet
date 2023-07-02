@@ -32,7 +32,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       if (userCredential.user != null) {
         // Giriş başarılı, işlemleri yapabilirsiniz.
         // Örneğin, kullanıcıyı ana sayfaya yönlendirebilirsiniz.
-        navigator.push(MaterialPageRoute(builder:(context) => ikincioturum() ,));
+        navigator.push(MaterialPageRoute(builder:(context) => ikinciOturum() ,));
       } else {
         // Giriş yapılamadı, hata mesajını göster
         showErrorDialog('Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');

@@ -52,7 +52,7 @@ class _UyeolState extends State<Uyeol> {
                 ElevatedButton(
                   child: Text('Tamam'),
                   onPressed: () {
-                    navigator.push(MaterialPageRoute(builder:(context) => ikincioturum() ,));
+                    navigator.push(MaterialPageRoute(builder:(context) => ikinciOturum() ,));
 
 
                   },

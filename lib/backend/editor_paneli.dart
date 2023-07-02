@@ -1,8 +1,12 @@
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/sefer_ekleme.dart';
+import 'package:bitiklabilet/backend/sefer_ekleme.dart';
+import 'package:bitiklabilet/backend/seferler.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:bitiklabilet/components/riverpod/bottom_nav_bar_riverpod.dart';
+
+import '../view/hesabım/oturum/ilk_oturum.dart';
+
 
 
 
@@ -27,10 +31,7 @@ class _EditorState extends State<EditorPaneli> {
 
 
           appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.pop(context),
-            ),
+
             title: Text('Editör Sayfası'),
             backgroundColor: Colors.red,
             centerTitle: true,
@@ -66,19 +67,28 @@ class _EditorState extends State<EditorPaneli> {
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Colors.white,
-                      ),
-                      padding: MaterialStateProperty.all<EdgeInsets>(
-                        EdgeInsets.only(top: 10, bottom: 10, right: 40, left: 40),
-                      ),
 
+
+
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Seferler())
+                      );
+
+
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.white,
+                      ),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.only(top: 10, bottom: 10, right: 81, left: 81),
+                      ),
                     ),
                     child: Text(
-                      "Sefer Güncelleme",
+                      "Seferler",
                       style: GoogleFonts.quicksand(
                         color: Colors.red,
                         fontSize: 18,
@@ -87,17 +97,22 @@ class _EditorState extends State<EditorPaneli> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => IlkOturum( )),
+                      );
+
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                         Colors.white,
                       ),
                       padding: MaterialStateProperty.all<EdgeInsets>(
-                        EdgeInsets.only(top: 10, bottom: 10, right: 67, left: 67),
+                        EdgeInsets.only(top:10 ,bottom: 10,right: 77,left: 77),
                       ),
                     ),
-                    child: Text(
-                      "Sefer Silme",
+                    child: Text("Çıkış Yap",
                       style: GoogleFonts.quicksand(
                         color: Colors.red,
                         fontSize: 18,
@@ -105,6 +120,7 @@ class _EditorState extends State<EditorPaneli> {
                       ),
                     ),
                   ),
+
 
                 ],
               ),

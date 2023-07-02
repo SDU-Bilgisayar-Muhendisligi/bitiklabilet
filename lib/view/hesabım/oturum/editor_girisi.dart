@@ -1,5 +1,5 @@
 import 'package:bitiklabilet/sabitler/tema.dart';
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_paneli.dart';
+import 'package:bitiklabilet/backend/editor_paneli.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';

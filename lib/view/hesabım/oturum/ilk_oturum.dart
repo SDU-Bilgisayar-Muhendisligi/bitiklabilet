@@ -1,7 +1,7 @@
 
 
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_girisi.dart';
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_paneli.dart';
+import 'package:bitiklabilet/backend/editor_paneli.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/profil_bilgileri.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/uyeol.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';

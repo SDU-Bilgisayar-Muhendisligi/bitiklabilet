@@ -1,18 +1,28 @@
 
 
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_oturumu.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_girisi.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_paneli.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/profil_bilgileri.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/uyeol.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/kampanyalar.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/para_birimi.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'giris.dart';
 
-class IlkOturum extends StatelessWidget {
+class IlkOturum extends StatefulWidget {
+  const IlkOturum({Key? key}) : super(key: key);
+
   @override
+  State<IlkOturum> createState() => IlkOturum1();
+}
+
+class IlkOturum1 extends State<IlkOturum> {
+
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -63,7 +73,7 @@ class IlkOturum extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => GirisSayfasi( )),
+                        MaterialPageRoute(builder: (context) => Uyeol( )),
                       );
                     },
                     style: ButtonStyle(
@@ -86,7 +96,7 @@ class IlkOturum extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Editor( )),
+                        MaterialPageRoute(builder: (context) =>  Editorgiris( )),
                       );
                     },
                     style: ButtonStyle(
@@ -108,30 +118,8 @@ class IlkOturum extends StatelessWidget {
                 ],
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Profil( )),
-                );
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Colors.white,
-                ),
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                  EdgeInsets.only(top:10 ,bottom: 10,right: 63,left: 63),
-                ),
-              ),
-              child: Text("PROFİLİM",
-                style: GoogleFonts.quicksand(
-                  color: Colors.red,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            SizedBox(height: 50),
+
+            SizedBox(height: 120),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -1,19 +1,21 @@
 import 'package:bitiklabilet/sabitler/tema.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_paneli.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../sabitler/ext.dart';
-import 'ikincioturum.dart';
 
-class GirisSayfasi extends StatefulWidget {
-  const GirisSayfasi({Key? key}) : super(key: key);
+
+class Editorgiris extends StatefulWidget {
+  const Editorgiris({Key? key}) : super(key: key);
 
   @override
-  State<GirisSayfasi> createState() => _GirisSayfasiState();
+  State<Editorgiris> createState() => EditorgirisState();
 }
 
-class _GirisSayfasiState extends State<GirisSayfasi> {
+class EditorgirisState extends State<Editorgiris> {
   Tema tema = Tema();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -30,9 +32,19 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       );
 
       if (userCredential.user != null) {
-        // Giriş başarılı, işlemleri yapabilirsiniz.
-        // Örneğin, kullanıcıyı ana sayfaya yönlendirebilirsiniz.
-        navigator.push(MaterialPageRoute(builder:(context) => ikincioturum() ,));
+        // Kullanıcı girişi başarılı, "admin" koleksiyonunu kontrol et
+        QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+            .collection('adusers')
+            .where('email', isEqualTo: email) // Kullanıcının e-posta adresini kontrol edin
+            .get();
+
+        if (querySnapshot.docs.isNotEmpty) {
+          // "admin" koleksiyonunda belgeler bulundu, işlemleri yapabilirsiniz
+          navigator.push(MaterialPageRoute(builder: (context) => EditorPaneli()));
+        } else {
+          // "admin" koleksiyonunda belge bulunamadı, hata mesajını göster
+          showErrorDialog('Yönetici yetkisine sahip değilsiniz.');
+        }
       } else {
         // Giriş yapılamadı, hata mesajını göster
         showErrorDialog('Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');
@@ -115,7 +127,6 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                   ),
                 ),
                 InkWell(
-
                   child: ElevatedButton(
                     onPressed: () {
                       signInUser();
@@ -137,3 +148,4 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
     );
   }
 }
+

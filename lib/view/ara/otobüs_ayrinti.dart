@@ -710,22 +710,6 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
                                   Color>(
                                 Colors.red,
                               ),
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              child: Center(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => Otobus_Hazirlama( )),
-                                    );
-                                  },
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<Color>(
-                                      Colors.red,
-                                    ),
-                                    padding: MaterialStateProperty.all<EdgeInsets>(
-                                      EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
-                                    ),
                               padding: MaterialStateProperty
                                   .all<EdgeInsets>(
                                 EdgeInsets.only(

@@ -1,24 +1,25 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'hb_görüntüleme.dart';
+import 'hb_görüntüleme1.dart';
 
-class Profil extends ConsumerWidget {
+class HesapGoruntuleme extends StatefulWidget {
+  const HesapGoruntuleme({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-
+  _HesapGoruntulemeState createState() => _HesapGoruntulemeState();
+}
+class _HesapGoruntulemeState extends State<HesapGoruntuleme>{
+  @override
+  Widget build(BuildContext context){
     List<Widget> buttons = [
       TextButton.icon(
         onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HesapGoruntuleme()),
+            context,
+            MaterialPageRoute(builder: (context) => HesapGoruntuleme1()),
           );
         },
-        label: const Text('Hesap Bilgilerini Görüntüleme',
+        label: const Text('Kullanıcı Bilgilerim',
           style: TextStyle(
             color: Colors.black54,
           ),
@@ -30,7 +31,7 @@ class Profil extends ConsumerWidget {
 
         },
         label:
-        const Text('Hesap Bilgilerini Düzenleme',
+        const Text('Ödeme Bilgilerim',
           style: TextStyle(
             color: Colors.black54,
           ),
@@ -41,7 +42,18 @@ class Profil extends ConsumerWidget {
         onPressed: () {
 
         },
-        label: const Text('Hesap Dondurma',
+        label: const Text('Kayıtlı Yolcularım',
+          style: TextStyle(
+            color: Colors.black54,
+          ),
+        ),
+        icon: Icon(Icons.chevron_right),
+      ),
+      TextButton.icon(
+        onPressed: () {
+
+        },
+        label: const Text('Fatura Bilgilerim',
           style: TextStyle(
             color: Colors.black54,
           ),
@@ -60,7 +72,7 @@ class Profil extends ConsumerWidget {
             icon: Icon(Icons.arrow_back),
             onPressed: () => Navigator.pop(context),
           ),
-          title: Text('Profilim'),
+          title: Text('Hesabım'),
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -93,6 +105,16 @@ class Profil extends ConsumerWidget {
               ),
               Container(
                 child: buttons[2],
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey,
+                    width: 2,
+                  ),
+                ),
+                margin: EdgeInsets.only(bottom: 10),
+              ),
+              Container(
+                child: buttons[3],
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.grey,

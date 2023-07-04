@@ -9,18 +9,18 @@ class Tema{
       border: InputBorder.none,
       hintText: hintText,
       hintStyle: GoogleFonts.quicksand(
-        color: renk(metin_renk),
+        color: Renk(metinRenk),
       ),
       prefixIcon: Icon(
         icon,
-        color: renk("5BA7FB"),
+        color: Renk("5BA7FB"),
       ), //prefix-sol suffix-sağ
     );
   }
 
   inputBoxDec(){
     return BoxDecoration(
-        color: renk("333443"),
+        color: Renk("ffffff"),
         borderRadius: BorderRadius.circular(20)
     );
   }

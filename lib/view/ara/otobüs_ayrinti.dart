@@ -8,10 +8,13 @@ class Otobus_Detay extends StatefulWidget {
   const Otobus_Detay({Key? key}) : super(key: key);
 
   @override
-  State<Otobus_Detay> createState() => _Otobus_DetayState();
+  _Otobus_DetayState createState() => _Otobus_DetayState();
+
 }
 
 class _Otobus_DetayState extends State<Otobus_Detay> {
+  late String _selectedNereden;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

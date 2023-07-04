@@ -41,7 +41,7 @@ class Seyahatlerim extends StatelessWidget {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                    renk("03BB85"),
+                    Renk("03BB85"),
                   ),
                   padding: MaterialStateProperty.all<EdgeInsets>(
                     EdgeInsets.only(top: 15,bottom: 15,right: 35,left: 35),
@@ -92,14 +92,14 @@ class Seyahatlerim extends StatelessWidget {
                   side: MaterialStateProperty.all<BorderSide>(
                     BorderSide(
                       width:2,
-                      color: renk("03BB85"),
+                      color: Renk("03BB85"),
                     ),
                   ),
                 ),
                 child: Text(
                   "SEYAHAT SORGULA",
                   style: GoogleFonts.quicksand(
-                      color: renk("03BB85"),
+                      color: Renk("03BB85"),
                       fontSize: 18,
                       fontWeight: FontWeight.bold
                   ),

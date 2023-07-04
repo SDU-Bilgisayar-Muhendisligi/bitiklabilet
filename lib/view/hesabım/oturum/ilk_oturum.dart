@@ -1,5 +1,4 @@
 
-
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_girisi.dart';
 import 'package:bitiklabilet/backend/editor_paneli.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/profil_bilgileri.dart';
@@ -7,21 +6,19 @@ import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/uyeol.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/kampanyalar.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/para_birimi.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'giris.dart';
 
-class IlkOturum extends StatefulWidget {
-  const IlkOturum({Key? key}) : super(key: key);
+class ilkOturum extends StatefulWidget {
+  const ilkOturum({Key? key}) : super(key: key);
 
   @override
-  State<IlkOturum> createState() => IlkOturum1();
+  State<ilkOturum> createState() => ilkOturum1();
 }
 
-class IlkOturum1 extends State<IlkOturum> {
+class ilkOturum1 extends State<ilkOturum> {
 
   Widget build(BuildContext context) {
     return MaterialApp(

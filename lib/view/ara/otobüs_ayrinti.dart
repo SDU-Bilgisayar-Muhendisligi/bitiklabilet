@@ -4,16 +4,21 @@ import 'package:intl/intl.dart';
 
 import 'bus_select.dart';
 
+enum SortingOption {
+  Saat, 
+  Fiyat,
+}
+
 class Otobus_Detay extends StatefulWidget {
   const Otobus_Detay({Key? key, required Map<String, dynamic> busData}) : super(key: key);
 
   @override
   _Otobus_DetayState createState() => _Otobus_DetayState();
-
 }
 
 class _Otobus_DetayState extends State<Otobus_Detay> {
   late String _selectedNereden;
+  SortingOption _sortingOption = SortingOption.Saat; // Varsayılan sıralama seçeneği
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +42,27 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
             return CircularProgressIndicator();
           }
 
-          final seferler = snapshot.data?.docs ?? [];
+          var seferler = snapshot.data?.docs ?? [];
+
+          // Seferleri sırala
+          seferler.sort((a, b) {
+            if (_sortingOption == SortingOption.Saat) {
+              final DateTime tarihA = a['tarih'].toDate();
+              final DateTime tarihB = b['tarih'].toDate();
+              return tarihA.compareTo(tarihB);
+            } else {
+              final double fiyatA = (a['fiyat'] ?? 0).toDouble();
+              final double fiyatB = (b['fiyat'] ?? 0).toDouble();
+              return fiyatA.compareTo(fiyatB);
+            }
+          });
+
+          // Sıralama seçeneğine göre ters sırala
+          if (_sortingOption == SortingOption.Saat) {
+            seferler = seferler.reversed.toList();
+          } else {
+            seferler = seferler.toList();
+          }
 
           return Column(
             children: [
@@ -52,107 +77,105 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(
-                    color: Colors.grey.shade500,
+                    color: Colors.grey.shade400,
+                    width: 1,
                   ),
                 ),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.tune,
-                      ),
+                child: PopupMenuButton<SortingOption>(
+                  icon: Icon(Icons.filter_list),
+                  onSelected: (SortingOption result) {
+                    setState(() {
+                      _sortingOption = result;
+                    });
+                  },
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<SortingOption>>[
+                    const PopupMenuItem<SortingOption>(
+                      value: SortingOption.Saat,
+                      child: Text('Saate Göre Sırala'),
                     ),
-                    const Text("Filtre"),
+                    const PopupMenuItem<SortingOption>(
+                      value: SortingOption.Fiyat,
+                      child: Text('Fiyata Göre Sırala'),
+                    ),
                   ],
                 ),
               ),
-              const Divider(),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    children: seferler.map((QueryDocumentSnapshot<Object?> document) {
+                    children: seferler.map((QueryDocumentSnapshot document) {
                       Map<String, dynamic> sefer = document.data() as Map<String, dynamic>;
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                        ),
-                        padding: EdgeInsets.all(30),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Kalkış",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    Text(
-                                      sefer['kalkisNoktasi'] ?? '',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
+                      return Card(
+                        elevation: 2,
+                        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        child: Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Kalkış: ${sefer['kalkisNoktasi'] ?? ''}",
+                                style: TextStyle(
+                                  fontSize: 16,
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "Varış",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    Text(
-                                      sefer['varisNoktasi'] ?? '',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ],
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                "Varış: ${sefer['varisNoktasi'] ?? ''}",
+                                style: TextStyle(
+                                  fontSize: 16,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                "Firma: ${sefer['firma'] ?? ''}",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                "Tarih: ${DateFormat('dd.MM.yyyy').format(sefer['tarih'].toDate()) ?? ''}",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(height: 8),
+                              Text(
+                                "Saat: ${DateFormat('HH:mm').format(sefer['tarih'].toDate()) ?? ''}",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(height: 16),
+                              Container(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Otobus_Hazirlama()),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.red,
+                                    padding: EdgeInsets.all(12),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
                                   ),
-                                  padding: EdgeInsets.symmetric(vertical: 10),
-                                  child: Center(
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => Otobus_Hazirlama()),
-                                        );
-                                      },
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all<Color>(
-                                          Colors.red,
-                                        ),
-                                        padding: MaterialStateProperty.all<EdgeInsets>(
-                                          EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
-                                        ),
-                                      ),
-                                      child: Text(
-                                        "${sefer['fiyat']} TL",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
+                                  child: Text(
+                                    "${sefer['fiyat']} TL",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     }).toList(),

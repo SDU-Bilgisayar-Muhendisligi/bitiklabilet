@@ -14,6 +14,7 @@ class BottomNavBar extends ConsumerWidget{
        items: read.items,
      currentIndex: watch.currentIndex,
      onTap: (index) => read.setCurrentIndex(index),
+     type: BottomNavigationBarType.fixed,
    );
   }
 }

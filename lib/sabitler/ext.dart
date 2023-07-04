@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-const String arka_renk="FF0000";
-const String metin_renk="7F8C99";
+const String arkaRenk="FF0000";
+const String metinRenk="000000";
 
-class renk extends Color{
+class Renk extends Color{
   static int _donustur(String hexColor){
     hexColor=hexColor.toUpperCase().replaceAll("#", "");
     if(hexColor.length==6){
-      hexColor="FF" + hexColor;
+      hexColor="FF$hexColor";
     }
     return int.parse(hexColor,radix:16);
   }
 
-  renk(final String renk_kodu): super(_donustur(renk_kodu));
+  Renk(final String renkKodu): super(_donustur(renkKodu));
 }

@@ -1,6 +1,5 @@
 import 'package:bitiklabilet/view/ara/ara.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ilk_oturum.dart';
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/uyeol.dart';
 import 'package:bitiklabilet/view/yard%C4%B1m/yard%C4%B1m.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +17,7 @@ class BottomNavBarRiverpod extends ChangeNotifier{
         icon: Icon(CupertinoIcons.question_circle) , label: "Yardım"),
     BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.profile_circled) ,label: "Hesabım"),
+
   ];
 
   int currentIndex=0;
@@ -36,18 +36,7 @@ class BottomNavBarRiverpod extends ChangeNotifier{
       case 2:
         return Yardim();
       case 3:
-        return IlkOturum();
-      case 4:
-        return EditorPaneli();
-      case 5:
-        return GirisSayfasi();
-      case 6:
-        return Editorgiris();
-      case 7:
-        return Uyeol();
-      case 8:
-        return ikincioturum();
-
+        return const ilkOturum();
       default:
         return Ara();
 

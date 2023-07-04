@@ -142,7 +142,7 @@ class _UyeolState extends State<Uyeol> {
                       Icons.people_alt_outlined,
                     ),
                     style: GoogleFonts.quicksand(
-                      color: renk(metin_renk),
+                      color: Renk(metinRenk),
                     ),
                   ),
                 ),
@@ -158,7 +158,7 @@ class _UyeolState extends State<Uyeol> {
                       Icons.vpn_key_outlined,
                     ),
                     style: GoogleFonts.quicksand(
-                      color: renk(metin_renk),
+                      color: Renk(metinRenk),
                       letterSpacing: 5, //şifrelerin arasındaki uzaklık
                     ),
                   ),
@@ -175,7 +175,7 @@ class _UyeolState extends State<Uyeol> {
                       Icons.vpn_key_outlined,
                     ),
                     style: GoogleFonts.quicksand(
-                      color: renk(metin_renk),
+                      color: Renk(metinRenk),
                       letterSpacing: 5, //şifrelerin arasındaki uzaklık
                     ),
                   ),

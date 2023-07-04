@@ -1,27 +1,13 @@
-
-
-
-
-
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ilk_oturum.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/profil_bilgileri.dart';
-
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/kampanyalar.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/para_birimi.dart';
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
-
 class ikincioturum extends StatelessWidget {
   @override
-
-
-
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -35,9 +21,6 @@ class ikincioturum extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
-
-
 
                 ],
               ),
@@ -69,7 +52,7 @@ class ikincioturum extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => IlkOturum( )),
+                  MaterialPageRoute(builder: (context) => ilkOturum( )),
                 );
 
               },

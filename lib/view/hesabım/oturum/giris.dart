@@ -96,7 +96,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     controller: emailController,
                     decoration: tema.inputDec("E-Posta Adresinizi Girin", Icons.people_alt_outlined),
                     style: GoogleFonts.quicksand(
-                      color: renk(metin_renk),
+                      color: Renk(metinRenk),
                     ),
                   ),
                 ),
@@ -109,7 +109,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                     obscureText: true,
                     decoration: tema.inputDec("Şifrenizi Girin", Icons.vpn_key_outlined),
                     style: GoogleFonts.quicksand(
-                      color: renk(metin_renk),
+                      color: Renk(metinRenk),
                       letterSpacing: 5,
                     ),
                   ),

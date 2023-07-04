@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 
 class Ara extends StatefulWidget {
-  Ara({Key? key}) : super(key: key);
+  const Ara({Key? key}) : super(key: key);
 
   @override
   _AraState createState() => _AraState();
@@ -75,6 +75,14 @@ class _AraState extends State<Ara>{
                      onChanged: (String? newValue) {
                        setState(() {
                          _selectedNereden = newValue!;
+                         Navigator.push(
+                           context,
+                           MaterialPageRoute(
+                             builder: (context) => Otobus_Detay(selectedNereden: _selectedNereden),
+                           ),
+                         );
+
+
                        });
                      },
                      decoration: InputDecoration(labelText: 'NEREDEN'),
@@ -177,7 +185,7 @@ class _AraState extends State<Ara>{
              onPressed: () {
              Navigator.push(
                context,
-               MaterialPageRoute(builder: (context) => Otobus_Detay( )),
+               MaterialPageRoute(builder: (context) => Otobus_Detay(selectedNereden: '', )),
              );
              },
              style: ButtonStyle(

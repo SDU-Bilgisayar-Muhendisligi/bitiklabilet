@@ -66,7 +66,7 @@ class ikincioturum extends State<ikinciOturum> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => IlkOturum()),
+                  MaterialPageRoute(builder: (context) => ilkOturum()),
                 );
               },
               style: ButtonStyle(

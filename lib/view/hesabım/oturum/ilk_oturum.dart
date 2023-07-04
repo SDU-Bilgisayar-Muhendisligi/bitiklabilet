@@ -9,6 +9,7 @@ import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/para_birimi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bitiklabilet/view/hesabım/oturum/ilk_oturum.dart';
 import 'giris.dart';
 
 class ilkOturum extends StatefulWidget {

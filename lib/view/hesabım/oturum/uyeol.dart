@@ -19,7 +19,8 @@ class _UyeolState extends State<Uyeol> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   CollectionReference _usersCollection = FirebaseFirestore.instance.collection('users');
-
+  TextEditingController isimController = TextEditingController();
+  TextEditingController soyisimController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -28,8 +29,7 @@ class _UyeolState extends State<Uyeol> {
   Future<void> registerUser(BuildContext context) async {
     final navigator = Navigator.of(context);
     try {
-      UserCredential userCredential =
-      await _auth.createUserWithEmailAndPassword(
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
@@ -39,6 +39,8 @@ class _UyeolState extends State<Uyeol> {
         await _usersCollection.doc(userCredential.user!.uid).set({
           'email': emailController.text,
           'password': passwordController.text,
+          'isim': isimController.text, // İsim değerini Firestore'a kaydet
+          'soyisim': soyisimController.text, // Soyisim değerini Firestore'a kaydet
         });
 
         // Başarılı mesajını göster
@@ -52,9 +54,7 @@ class _UyeolState extends State<Uyeol> {
                 ElevatedButton(
                   child: Text('Tamam'),
                   onPressed: () {
-                    navigator.push(MaterialPageRoute(builder:(context) => ikinciOturum() ,));
-
-
+                    navigator.push(MaterialPageRoute(builder: (context) => ikinciOturum()));
                   },
                 ),
               ],
@@ -114,7 +114,9 @@ class _UyeolState extends State<Uyeol> {
             onPressed: () => Navigator.pop(context),
           ),
         ),
-        body: Container(
+        body:
+
+        Container(
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -125,6 +127,37 @@ class _UyeolState extends State<Uyeol> {
                     style: GoogleFonts.quicksand(
                       color: Colors.black,
                       fontSize: 30,
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: tema.inputBoxDec(),
+                  margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
+                  padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: TextFormField(
+                    controller: isimController,
+                    decoration: tema.inputDec(
+                      "İsim",
+                      Icons.person,
+                    ),
+                    style: GoogleFonts.quicksand(
+                      color: Renk(metinRenk),
+                    ),
+                  ),
+                ),
+
+                Container(
+                  decoration: tema.inputBoxDec(),
+                  margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
+                  padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: TextFormField(
+                    controller: soyisimController,
+                    decoration: tema.inputDec(
+                      "Soyisim",
+                      Icons.person,
+                    ),
+                    style: GoogleFonts.quicksand(
+                      color: Renk(metinRenk),
                     ),
                   ),
                 ),

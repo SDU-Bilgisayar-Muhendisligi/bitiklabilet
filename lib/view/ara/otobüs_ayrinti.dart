@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'bus_select.dart';
 
 class Otobus_Detay extends StatefulWidget {
-  const Otobus_Detay({Key? key}) : super(key: key);
+  const Otobus_Detay({Key? key, required Map<String, dynamic> busData}) : super(key: key);
 
   @override
   _Otobus_DetayState createState() => _Otobus_DetayState();

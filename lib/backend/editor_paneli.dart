@@ -100,7 +100,7 @@ class _EditorState extends State<EditorPaneli> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => IlkOturum( )),
+                        MaterialPageRoute(builder: (context) => ilkOturum()),
                       );
 
                     },

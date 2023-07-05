@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'bus_select.dart';
 
 enum SortingOption {
-  Saat, 
+  Saat,
   Fiyat,
 }
 

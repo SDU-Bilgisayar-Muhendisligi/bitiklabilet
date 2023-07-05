@@ -78,7 +78,7 @@ class _AraState extends State<Ara>{
                          Navigator.push(
                            context,
                            MaterialPageRoute(
-                             builder: (context) => Otobus_Detay(selectedNereden: _selectedNereden),
+                             builder: (context) => Otobus_Detay(),
                            ),
                          );
 
@@ -185,7 +185,7 @@ class _AraState extends State<Ara>{
              onPressed: () {
              Navigator.push(
                context,
-               MaterialPageRoute(builder: (context) => Otobus_Detay(selectedNereden: '', )),
+               MaterialPageRoute(builder: (context) => Otobus_Detay()),
              );
              },
              style: ButtonStyle(

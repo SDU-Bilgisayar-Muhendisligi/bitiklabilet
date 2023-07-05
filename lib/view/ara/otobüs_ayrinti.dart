@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'bus_select.dart';
 
 enum SortingOption {
-  Saat,
-  Fiyat,
+  Saat, // Saate göre sıralama
+  Fiyat, // Fiyata göre sıralama
 }
 
 class Otobus_Detay extends StatefulWidget {
@@ -17,7 +17,7 @@ class Otobus_Detay extends StatefulWidget {
 }
 
 class _Otobus_DetayState extends State<Otobus_Detay> {
-  late String _selectedNereden;
+
   SortingOption _sortingOption = SortingOption.Saat; // Varsayılan sıralama seçeneği
 
   @override
@@ -44,18 +44,30 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
 
           var seferler = snapshot.data?.docs ?? [];
 
+          int compareTimes(DateTime a, DateTime b) {
+            final int hourComparison = a.hour.compareTo(b.hour);
+            if (hourComparison != 0) {
+              return hourComparison;
+            }
+
+            return a.minute.compareTo(b.minute);
+          }
+
           // Seferleri sırala
           seferler.sort((a, b) {
             if (_sortingOption == SortingOption.Saat) {
-              final DateTime tarihA = a['tarih'].toDate();
-              final DateTime tarihB = b['tarih'].toDate();
-              return tarihA.compareTo(tarihB);
+              final DateTime tarihA = (a['tarih'] as Timestamp).toDate();
+              final DateTime tarihB = (b['tarih'] as Timestamp).toDate();
+              return compareTimes(tarihA, tarihB);
             } else {
               final double fiyatA = (a['fiyat'] ?? 0).toDouble();
               final double fiyatB = (b['fiyat'] ?? 0).toDouble();
               return fiyatA.compareTo(fiyatB);
             }
           });
+
+
+
 
           // Sıralama seçeneğine göre ters sırala
           if (_sortingOption == SortingOption.Saat) {

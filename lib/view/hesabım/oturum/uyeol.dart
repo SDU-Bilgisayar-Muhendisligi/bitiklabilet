@@ -20,8 +20,8 @@ class _UyeolState extends State<Uyeol> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   CollectionReference _usersCollection = FirebaseFirestore.instance.collection('users');
-  TextEditingController isimController = TextEditingController();
-  TextEditingController soyisimController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -36,12 +36,11 @@ class _UyeolState extends State<Uyeol> {
       );
 
       if (userCredential.user != null) {
-        // Kullanıcı başarıyla oluşturuldu, Firestore'a kaydet
         await _usersCollection.doc(userCredential.user!.uid).set({
           'email': emailController.text,
           'password': passwordController.text,
-          'isim': isimController.text, // İsim değerini Firestore'a kaydet
-          'soyisim': soyisimController.text, // Soyisim değerini Firestore'a kaydet
+          'isim': nameController.text,
+          'soyisim': surnameController.text,
         });
 
         // Başarılı mesajını göster
@@ -136,7 +135,7 @@ class _UyeolState extends State<Uyeol> {
                   margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
                   padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                   child: TextFormField(
-                    controller: isimController,
+                    controller: nameController,
                     decoration: tema.inputDec(
                       "İsim",
                       Icons.person,
@@ -152,7 +151,7 @@ class _UyeolState extends State<Uyeol> {
                   margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
                   padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                   child: TextFormField(
-                    controller: soyisimController,
+                    controller: surnameController,
                     decoration: tema.inputDec(
                       "Soyisim",
                       Icons.person,

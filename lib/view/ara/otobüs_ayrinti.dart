@@ -69,7 +69,7 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
 
 
 
-          // Sıralama seçeneğine göre ters sırala
+
           if (_sortingOption == SortingOption.Saat) {
             seferler = seferler.reversed.toList();
           } else {

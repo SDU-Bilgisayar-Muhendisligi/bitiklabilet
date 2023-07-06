@@ -1,4 +1,4 @@
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/cikis.dart';
+import 'package:bitiklabilet/backend/cikis.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ilk_oturum.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/profil_bilgileri.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';

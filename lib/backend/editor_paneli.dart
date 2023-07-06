@@ -1,6 +1,6 @@
 import 'package:bitiklabilet/backend/sefer_ekleme.dart';
 import 'package:bitiklabilet/backend/seferler.dart';
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/cikis.dart';
+import 'package:bitiklabilet/backend/cikis.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

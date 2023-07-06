@@ -4,7 +4,7 @@ import 'package:bitiklabilet/view/yard%C4%B1m/yard%C4%B1m.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'GirişYapılmışHesap.dart';
+import '../../../backend/GirişYapılmışHesap.dart';
 
 
 class ikinciOturum1 extends StatefulWidget {

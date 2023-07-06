@@ -1,12 +1,12 @@
 import 'package:bitiklabilet/sabitler/tema.dart';
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ikincioturum.dart';
+import 'package:bitiklabilet/backend/ikincioturum.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../sabitler/ext.dart';
-import 'GirişYapılmışHesap.dart';
+import '../../../backend/GirişYapılmışHesap.dart';
 
 class Uyeol extends StatefulWidget {
   const Uyeol({Key? key}) : super(key: key);

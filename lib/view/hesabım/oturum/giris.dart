@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../sabitler/ext.dart';
-import 'GirişYapılmışHesap.dart';
-import 'ikincioturum.dart';
+import '../../../backend/GirişYapılmışHesap.dart';
+import 'package:bitiklabilet/backend/ikincioturum.dart';
 
 class GirisSayfasi extends StatefulWidget {
   const GirisSayfasi({Key? key}) : super(key: key);

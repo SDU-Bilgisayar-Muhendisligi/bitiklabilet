@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'GirişYapılmışHesap.dart';
-import 'ilk_oturum.dart';
+import '../view/hesabım/oturum/ilk_oturum.dart';
 
 
 class oturumcikis extends StatefulWidget {

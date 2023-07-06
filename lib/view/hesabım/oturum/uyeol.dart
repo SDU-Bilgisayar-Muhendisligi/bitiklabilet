@@ -19,7 +19,8 @@ class _UyeolState extends State<Uyeol> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   CollectionReference _usersCollection = FirebaseFirestore.instance.collection('users');
-
+  TextEditingController isimController = TextEditingController();
+  TextEditingController soyisimController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -39,6 +40,8 @@ class _UyeolState extends State<Uyeol> {
         await _usersCollection.doc(userCredential.user!.uid).set({
           'email': emailController.text,
           'password': passwordController.text,
+          'isim': isimController.text,
+          'soyisim': soyisimController.text, //
         });
 
         // Başarılı mesajını göster
@@ -125,6 +128,37 @@ class _UyeolState extends State<Uyeol> {
                     style: GoogleFonts.quicksand(
                       color: Colors.black,
                       fontSize: 30,
+                    ),
+                  ),
+                ),
+                Container(
+                  decoration: tema.inputBoxDec(),
+                  margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
+                  padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: TextFormField(
+                    controller: isimController,
+                    decoration: tema.inputDec(
+                      "İsim",
+                      Icons.person,
+                    ),
+                    style: GoogleFonts.quicksand(
+                      color: Renk(metinRenk),
+                    ),
+                  ),
+                ),
+
+                Container(
+                  decoration: tema.inputBoxDec(),
+                  margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
+                  padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+                  child: TextFormField(
+                    controller: soyisimController,
+                    decoration: tema.inputDec(
+                      "Soyisim",
+                      Icons.person,
+                    ),
+                    style: GoogleFonts.quicksand(
+                      color: Renk(metinRenk),
                     ),
                   ),
                 ),

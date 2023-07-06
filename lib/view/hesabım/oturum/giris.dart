@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../sabitler/ext.dart';
+import 'GirişYapılmışHesap.dart';
 import 'ikincioturum.dart';
 
 class GirisSayfasi extends StatefulWidget {
@@ -32,7 +33,7 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       if (userCredential.user != null) {
         // Giriş başarılı, işlemleri yapabilirsiniz.
         // Örneğin, kullanıcıyı ana sayfaya yönlendirebilirsiniz.
-        navigator.push(MaterialPageRoute(builder:(context) => ikinciOturum() ,));
+        navigator.push(MaterialPageRoute(builder:(context) => ikinciOturum1() ,));
       } else {
         // Giriş yapılamadı, hata mesajını göster
         showErrorDialog('Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');

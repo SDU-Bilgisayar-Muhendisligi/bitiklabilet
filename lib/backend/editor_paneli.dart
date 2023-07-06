@@ -1,5 +1,6 @@
 import 'package:bitiklabilet/backend/sefer_ekleme.dart';
 import 'package:bitiklabilet/backend/seferler.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/cikis.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -100,7 +101,7 @@ class _EditorState extends State<EditorPaneli> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ilkOturum()),
+                        MaterialPageRoute(builder: (context) => oturumcikis()),
                       );
 
                     },

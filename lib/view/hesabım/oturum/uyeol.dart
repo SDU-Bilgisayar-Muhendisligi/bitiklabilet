@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../sabitler/ext.dart';
+import 'GirişYapılmışHesap.dart';
 
 class Uyeol extends StatefulWidget {
   const Uyeol({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class _UyeolState extends State<Uyeol> {
                 ElevatedButton(
                   child: Text('Tamam'),
                   onPressed: () {
-                    navigator.push(MaterialPageRoute(builder: (context) => ikinciOturum()));
+                    navigator.push(MaterialPageRoute(builder: (context) => ikinciOturum1()));
                   },
                 ),
               ],

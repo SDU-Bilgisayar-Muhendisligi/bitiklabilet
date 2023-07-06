@@ -5,16 +5,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'GirişYapılmışHesap.dart';
+import 'ilk_oturum.dart';
 
 
-class ikinciOturum1 extends StatefulWidget {
-  const ikinciOturum1({Key? key}) : super(key: key);
+class oturumcikis extends StatefulWidget {
+  const oturumcikis({Key? key}) : super(key: key);
 
   @override
-  State<ikinciOturum1> createState() => ikincioturum2();
+  State<oturumcikis> createState() => cikisoturumu();
 }
 
-class ikincioturum2 extends State<ikinciOturum1> {
+class cikisoturumu extends State<oturumcikis> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -22,7 +23,7 @@ class ikincioturum2 extends State<ikinciOturum1> {
     Ara(),
     Seyahatlerim(),
     Yardim(),
-    ikinciOturum(),
+    ilkOturum(),
   ];
 
   void _onItemTapped(int index) {

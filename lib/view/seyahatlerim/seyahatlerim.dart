@@ -6,6 +6,8 @@ import '../../sabitler/ext.dart';
 import '../hesabım/oturum/giris.dart';
 
 class Seyahatlerim extends StatelessWidget {
+  const Seyahatlerim({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

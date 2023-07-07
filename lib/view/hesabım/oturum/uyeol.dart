@@ -1,11 +1,12 @@
 import 'package:bitiklabilet/sabitler/tema.dart';
-import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/ikincioturum.dart';
+import 'package:bitiklabilet/backend/ikincioturum.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../sabitler/ext.dart';
+import '../../../backend/GirişYapılmışHesap.dart';
 
 class Uyeol extends StatefulWidget {
   const Uyeol({Key? key}) : super(key: key);
@@ -19,8 +20,8 @@ class _UyeolState extends State<Uyeol> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   CollectionReference _usersCollection = FirebaseFirestore.instance.collection('users');
-  TextEditingController isimController = TextEditingController();
-  TextEditingController soyisimController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -29,19 +30,17 @@ class _UyeolState extends State<Uyeol> {
   Future<void> registerUser(BuildContext context) async {
     final navigator = Navigator.of(context);
     try {
-      UserCredential userCredential =
-      await _auth.createUserWithEmailAndPassword(
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
 
       if (userCredential.user != null) {
-        // Kullanıcı başarıyla oluşturuldu, Firestore'a kaydet
         await _usersCollection.doc(userCredential.user!.uid).set({
           'email': emailController.text,
           'password': passwordController.text,
-          'isim': isimController.text,
-          'soyisim': soyisimController.text, //
+          'isim': nameController.text,
+          'soyisim': surnameController.text,
         });
 
         // Başarılı mesajını göster
@@ -55,9 +54,7 @@ class _UyeolState extends State<Uyeol> {
                 ElevatedButton(
                   child: Text('Tamam'),
                   onPressed: () {
-                    navigator.push(MaterialPageRoute(builder:(context) => ikincioturum() ,));
-
-
+                    navigator.push(MaterialPageRoute(builder: (context) => ikinciOturum1()));
                   },
                 ),
               ],
@@ -117,7 +114,9 @@ class _UyeolState extends State<Uyeol> {
             onPressed: () => Navigator.pop(context),
           ),
         ),
-        body: Container(
+        body:
+
+        Container(
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -136,7 +135,7 @@ class _UyeolState extends State<Uyeol> {
                   margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
                   padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                   child: TextFormField(
-                    controller: isimController,
+                    controller: nameController,
                     decoration: tema.inputDec(
                       "İsim",
                       Icons.person,
@@ -152,7 +151,7 @@ class _UyeolState extends State<Uyeol> {
                   margin: EdgeInsets.only(top: 5, bottom: 20, right: 30, left: 30),
                   padding: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
                   child: TextFormField(
-                    controller: soyisimController,
+                    controller: surnameController,
                     decoration: tema.inputDec(
                       "Soyisim",
                       Icons.person,

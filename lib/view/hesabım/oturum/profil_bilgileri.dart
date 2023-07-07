@@ -1,5 +1,6 @@
 
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/hb_d%C3%BCzenleme.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/hesap_dondurma.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,7 +44,10 @@ class Profil extends ConsumerWidget {
       ),
       TextButton.icon(
         onPressed: () {
-
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HesapDondurma()),
+          );
         },
         label: const Text('Hesap Dondurma',
           style: TextStyle(

@@ -1,5 +1,7 @@
 
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/editor_girisi.dart';
+import 'package:bitiklabilet/backend/editor_paneli.dart';
+import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/profil_bilgileri.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/oturum/uyeol.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/dil_secimi.dart';
 import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/kampanyalar.dart';
@@ -7,6 +9,7 @@ import 'package:bitiklabilet/view/hesab%C4%B1m/sayfalar/para_birimi.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:bitiklabilet/view/hesabım/oturum/ilk_oturum.dart';
 import 'giris.dart';
 
 class ilkOturum extends StatefulWidget {

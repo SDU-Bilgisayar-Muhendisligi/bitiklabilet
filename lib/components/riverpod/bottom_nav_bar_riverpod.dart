@@ -37,6 +37,8 @@ class BottomNavBarRiverpod extends ChangeNotifier{
         return Yardim();
       case 3:
         return const ilkOturum();
+      case 4:
+
       default:
         return Ara();
 

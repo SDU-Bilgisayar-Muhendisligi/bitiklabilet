@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class BaseScaffold extends ConsumerWidget{
-  const BaseScaffold({Key? key}) : super(key: key);
+  const BaseScaffold({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref){

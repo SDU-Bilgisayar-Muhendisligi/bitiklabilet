@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../sabitler/ext.dart';
-import 'ikincioturum.dart';
+import '../../../backend/GirişYapılmışHesap.dart';
+import 'package:bitiklabilet/backend/ikincioturum.dart';
 
 class GirisSayfasi extends StatefulWidget {
   const GirisSayfasi({Key? key}) : super(key: key);
@@ -30,11 +31,14 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       );
 
       if (userCredential.user != null) {
-        navigator.push(MaterialPageRoute(builder:(context) => ikincioturum() ,));
+
+        navigator.push(MaterialPageRoute(builder:(context) => ikinciOturum1() ,));
       } else {
+
         showErrorDialog('Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');
       }
     } catch (e) {
+
       showErrorDialog(e.toString());
     }
   }

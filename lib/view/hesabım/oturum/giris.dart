@@ -30,15 +30,11 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       );
 
       if (userCredential.user != null) {
-        // Giriş başarılı, işlemleri yapabilirsiniz.
-        // Örneğin, kullanıcıyı ana sayfaya yönlendirebilirsiniz.
         navigator.push(MaterialPageRoute(builder:(context) => ikincioturum() ,));
       } else {
-        // Giriş yapılamadı, hata mesajını göster
         showErrorDialog('Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');
       }
     } catch (e) {
-      // Hata mesajını göster
       showErrorDialog(e.toString());
     }
   }
@@ -62,7 +58,6 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

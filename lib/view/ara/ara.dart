@@ -168,7 +168,7 @@ class _AraState extends State<Ara>{
                         style: ElevatedButton.styleFrom(
                           primary: Colors.red,
                         ),
-                        child: Text(_departureDate == null ? 'Select date' : DateFormat('dd/MM/yyyy').format(_departureDate!)),
+                        child: Text(_departureDate == null ? 'Lütfen Tarih Seçin' : DateFormat('dd/MM/yyyy').format(_departureDate!)),
                       ),
                ],
              ),

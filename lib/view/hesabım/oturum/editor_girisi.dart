@@ -42,15 +42,12 @@ class EditorgirisState extends State<Editorgiris> {
           // "admin" koleksiyonunda belgeler bulundu, işlemleri yapabilirsiniz
           navigator.push(MaterialPageRoute(builder: (context) => EditorPaneli()));
         } else {
-          // "admin" koleksiyonunda belge bulunamadı, hata mesajını göster
           showErrorDialog('Yönetici yetkisine sahip değilsiniz.');
         }
       } else {
-        // Giriş yapılamadı, hata mesajını göster
         showErrorDialog('Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');
       }
     } catch (e) {
-      // Hata mesajını göster
       showErrorDialog(e.toString());
     }
   }
@@ -107,9 +104,7 @@ class EditorgirisState extends State<Editorgiris> {
                   child: TextFormField(
                     controller: emailController,
                     decoration: tema.inputDec("E-Posta Adresinizi Girin", Icons.people_alt_outlined),
-                    style: GoogleFonts.quicksand(
-                      color: Renk(metinRenk),
-                    ),
+
                   ),
                 ),
                 Container(
@@ -120,14 +115,15 @@ class EditorgirisState extends State<Editorgiris> {
                     controller: passwordController,
                     obscureText: true,
                     decoration: tema.inputDec("Şifrenizi Girin", Icons.vpn_key_outlined),
-                    style: GoogleFonts.quicksand(
-                      color: Renk(metinRenk),
-                      letterSpacing: 5,
-                    ),
+
                   ),
                 ),
                 InkWell(
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red, // Kırmızı renk
+                    ),
+
                     onPressed: () {
                       signInUser();
                     },
@@ -135,9 +131,11 @@ class EditorgirisState extends State<Editorgiris> {
                       "GİRİŞ YAP",
                       style: GoogleFonts.quicksand(
                         color: Colors.white,
+
                         fontSize: 20,
                       ),
                     ),
+
                   ),
                 ),
               ],

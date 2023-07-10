@@ -17,6 +17,7 @@ class _HesapDondurmaState extends State<HesapDondurma> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Hesap Dondurma"),
+        backgroundColor: Colors.red,
       ),
       body: Center(
         child: ElevatedButton(
@@ -54,7 +55,11 @@ class _HesapDondurmaState extends State<HesapDondurma> {
               Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
             }
           },
+          style: ElevatedButton.styleFrom(
+            primary: Colors.red,
+          ),
           child: Text("Hesabımı Dondur"),
+
         ),
       ),
     );

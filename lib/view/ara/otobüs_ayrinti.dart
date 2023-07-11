@@ -60,10 +60,7 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
 
           return Column(
             children: [
-              Container(
-                height: 70,
-                color: Colors.red,
-              ),
+             
               Container(
                 margin: EdgeInsets.all(16),
                 height: 45,

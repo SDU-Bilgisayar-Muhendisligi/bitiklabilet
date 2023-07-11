@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'bus_select.dart';
 
 enum SortingOption {
-  Saat, // Saate göre sıralama
-  Fiyat, // Fiyata göre sıralama
+  Saat,
+  Fiyat,
 }
 
 class Otobus_Detay extends StatefulWidget {
@@ -17,8 +17,8 @@ class Otobus_Detay extends StatefulWidget {
 }
 
 class _Otobus_DetayState extends State<Otobus_Detay> {
-
   SortingOption _sortingOption = SortingOption.Saat; // Varsayılan sıralama seçeneği
+  bool _isDescending = false; // Sıralama düzenini tutan değişken
 
   @override
   Widget build(BuildContext context) {
@@ -44,37 +44,19 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
 
           var seferler = snapshot.data?.docs ?? [];
 
-          int compareTimes(DateTime a, DateTime b) {
-            final int hourComparison = a.hour.compareTo(b.hour);
-            if (hourComparison != 0) {
-              return hourComparison;
-            }
-
-            return a.minute.compareTo(b.minute);
-          }
-
-          // Seferleri sırala
           seferler.sort((a, b) {
             if (_sortingOption == SortingOption.Saat) {
               final DateTime tarihA = (a['tarih'] as Timestamp).toDate();
               final DateTime tarihB = (b['tarih'] as Timestamp).toDate();
-              return compareTimes(tarihA, tarihB);
+              final int timeComparison = compareTimes(tarihA, tarihB);
+              return _isDescending ? -timeComparison : timeComparison;
             } else {
               final double fiyatA = (a['fiyat'] ?? 0).toDouble();
               final double fiyatB = (b['fiyat'] ?? 0).toDouble();
-              return fiyatA.compareTo(fiyatB);
+              final int priceComparison = fiyatA.compareTo(fiyatB);
+              return _isDescending ? -priceComparison : priceComparison;
             }
           });
-
-
-
-
-
-          if (_sortingOption == SortingOption.Saat) {
-            seferler = seferler.reversed.toList();
-          } else {
-            seferler = seferler.toList();
-          }
 
           return Column(
             children: [
@@ -85,29 +67,64 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
               Container(
                 margin: EdgeInsets.all(16),
                 height: 45,
-                width: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(
-                    color: Colors.grey.shade400,
-                    width: 1,
-                  ),
-                ),
-                child: PopupMenuButton<SortingOption>(
-                  icon: Icon(Icons.filter_list),
-                  onSelected: (SortingOption result) {
-                    setState(() {
-                      _sortingOption = result;
-                    });
-                  },
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry<SortingOption>>[
-                    const PopupMenuItem<SortingOption>(
-                      value: SortingOption.Saat,
-                      child: Text('Saate Göre Sırala'),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (_sortingOption == SortingOption.Saat) {
+                              _isDescending = !_isDescending;
+                            } else {
+                              _sortingOption = SortingOption.Saat;
+                              _isDescending = false;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: _sortingOption == SortingOption.Saat ? Colors.red : Colors.white,
+                          onPrimary: _sortingOption == SortingOption.Saat ? Colors.white : Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(4),
+                              bottomLeft: Radius.circular(4),
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                        ),
+                        child: Text(_sortingOption == SortingOption.Saat
+                            ? _isDescending ? 'Saate Göre Sırala' : 'Saate Göre Sırala'
+                            : 'Saate Göre Sırala'),
+                      ),
                     ),
-                    const PopupMenuItem<SortingOption>(
-                      value: SortingOption.Fiyat,
-                      child: Text('Fiyata Göre Sırala'),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (_sortingOption == SortingOption.Fiyat) {
+                              _isDescending = !_isDescending;
+                            } else {
+                              _sortingOption = SortingOption.Fiyat;
+                              _isDescending = false;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: _sortingOption == SortingOption.Fiyat ? Colors.red : Colors.white,
+                          onPrimary: _sortingOption == SortingOption.Fiyat ? Colors.white : Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(4),
+                              bottomRight: Radius.circular(4),
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                        ),
+                        child: Text(_sortingOption == SortingOption.Fiyat
+                            ? _isDescending ? 'Fiyata Göre Sırala' : 'Fiyata Göre Sırala'
+                            : 'Fiyata Göre Sırala'),
+                      ),
                     ),
                   ],
                 ),
@@ -199,5 +216,13 @@ class _Otobus_DetayState extends State<Otobus_Detay> {
         },
       ),
     );
+  }
+
+  int compareTimes(DateTime a, DateTime b) {
+    final int hourComparison = a.hour.compareTo(b.hour);
+    if (hourComparison != 0) {
+      return hourComparison;
+    }
+    return a.minute.compareTo(b.minute);
   }
 }

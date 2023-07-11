@@ -41,6 +41,7 @@ class ikincioturum2 extends State<ikinciOturum1> {
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.red,
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,

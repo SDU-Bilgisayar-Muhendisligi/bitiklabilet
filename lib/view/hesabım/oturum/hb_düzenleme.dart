@@ -13,9 +13,11 @@ class _HesapDuzenlemeState extends State<HesapDuzenleme> {
   final _isimController = TextEditingController();
   final _soyisimController = TextEditingController();
   final _emailController = TextEditingController();
+
   String? _isim;
   String? _soyisim;
   String? _email ;
+
 
   @override
   void initState() {
@@ -40,12 +42,16 @@ class _HesapDuzenlemeState extends State<HesapDuzenleme> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Hesap Düzenleme"),
+        backgroundColor: Colors.red,
       ),
-      body: Form(
+      body:SingleChildScrollView(
+        child: Form(
         key: _formKey,
         child: Column(
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 10),
+            Text('Kişisel Bilgiler', style: TextStyle(fontSize: 20)),
+            SizedBox(height: 10),
             TextFormField(
               controller: _isimController,
               decoration: InputDecoration(
@@ -64,7 +70,7 @@ class _HesapDuzenlemeState extends State<HesapDuzenleme> {
                 });
               },
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             TextFormField(
               controller: _soyisimController,
               decoration: InputDecoration(
@@ -83,7 +89,7 @@ class _HesapDuzenlemeState extends State<HesapDuzenleme> {
                 });
               },
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             TextFormField(
               controller: _emailController,
               decoration: InputDecoration(
@@ -102,7 +108,7 @@ class _HesapDuzenlemeState extends State<HesapDuzenleme> {
                 });
               },
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             ElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
@@ -111,15 +117,19 @@ class _HesapDuzenlemeState extends State<HesapDuzenleme> {
                   await FirebaseFirestore.instance.collection("users").doc(currentUser!.uid).update({
                     'isim': _isim,
                     'soyisim' : _soyisim,
-                    'email' : _email
+                    'email' : _email,
                   });
                   Navigator.pop(context);
                 }
               },
-              child: Text("Kaydet"),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+              ),
+                child: Text("Kaydet"),
             ),
           ],
         ),
+      ),
       ),
     );
   }

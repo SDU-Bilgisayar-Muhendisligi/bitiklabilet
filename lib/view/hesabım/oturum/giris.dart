@@ -2,7 +2,7 @@ import 'package:bitiklabilet/sabitler/tema.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../sabitler/ext.dart';
 import '../../../backend/GirişYapılmışHesap.dart';
 import 'package:bitiklabilet/backend/ikincioturum.dart';
@@ -31,14 +31,50 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
       );
 
       if (userCredential.user != null) {
+        User? currentUser = FirebaseAuth.instance.currentUser;
+        DocumentSnapshot<Map<String, dynamic>> snapshot =
+        await FirebaseFirestore.instance.collection("users").doc(
+            currentUser!.uid).get();
+        bool isDonduruldu = snapshot.data()?['donduruldu'] ?? false;
+        if (isDonduruldu) {
+          bool? result = await showDialog<bool>(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Hesabınız Dondurulmuştur"),
+                content: Text("Hesabınızı tekrar açmak ister misiniz?"),
+                actions: [
+                  TextButton(
+                    onPressed: () async {
+                      await FirebaseFirestore.instance
+                          .collection("users")
+                          .doc(currentUser.uid)
+                          .update({'donduruldu': false});
+                      Navigator.pop(context, true);
+                    },
+                    child: Text("Evet"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, false);
+                    },
+                    child: Text("Hayır"),
+                  ),
+                ],
+              );
+            },
+          );
+          if (result == true) {
 
-        navigator.push(MaterialPageRoute(builder:(context) => ikinciOturum1() ,));
-      } else {
-
+          }
+        } else {
+          navigator.push(
+              MaterialPageRoute(builder: (context) => ikinciOturum1()));
+        }
+      }else {
         showErrorDialog('Giriş yapılamadı. Lütfen bilgilerinizi kontrol edin.');
       }
     } catch (e) {
-
       showErrorDialog(e.toString());
     }
   }
@@ -114,7 +150,6 @@ class _GirisSayfasiState extends State<GirisSayfasi> {
                   ),
                 ),
                 InkWell(
-
                   child: ElevatedButton(
                     onPressed: () {
                       signInUser();

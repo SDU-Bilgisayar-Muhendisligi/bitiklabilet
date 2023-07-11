@@ -1,16 +1,25 @@
 # bitiklabilet
 
-A new Flutter project.
+Projeyi Git clone kullanarak klonlayın.
 
-## Getting Started
+Projeyi Android Studio ile açın.
 
-This project is a starting point for a Flutter application.
+Terminal bölümüne gelip alttaki komutları sırayla terminale yazın.
 
-A few resources to get you started if this is your first Flutter project:
+flutter pub add firebase_core
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+flutter pub add firebase_auth
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+flutter pub add cloud_firestore
+
+flutter pub add google_fonts
+
+dart pub add cupertino_icons
+
+dart pub add riverpod
+
+flutter pub add date_time_picker
+
+Ekranın üst kısmında gelen uyarı mesajına get dependencies butonuna tıklayın.
+
+Bu işlemlerden sonra Run butonuna basıldığında proje çalışacaktır.
